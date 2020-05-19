@@ -14,6 +14,12 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: $breakpoint-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--grey-light-2);
+  }
+
   &__input {
     font-family: inherit;
     font-size: inherit;
@@ -119,11 +125,24 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $breakpoint-medium) {
+    display: flex;
+    margin: 0;
+  }
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $breakpoint-medium) {
+        margin: 0;
+      }
+    }
+
+    @media only screen and (max-width: $breakpoint-medium) {
+      flex: 1;
     }
   }
 
@@ -162,6 +181,16 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $breakpoint-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @media only screen and (max-width: $breakpoint-small) {
+      flex-direction: column;
+      padding: 1.5rem 0.5rem;
+    }
   }
 
   &__icon {
@@ -169,6 +198,13 @@
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      margin-right: 0;
+      margin-bottom: 7px;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -179,6 +215,10 @@
   color: var(--grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    display: none;
+  }
 }
 
 //////////////////////
@@ -205,6 +245,11 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
 
   &__stars {
@@ -236,17 +281,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      font-size: 1.8rem;
+    }
   }
 
   &__rating-count {
     font-size: 0.8rem;
     text-transform: uppercase;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      font-size: 0.5rem;
+    }
   }
 }
 
@@ -329,7 +386,21 @@
     height: 1rem;
     width: 1rem;
     margin-right: 0.7rem;
-    // background-image: url(../img/chevron-thin-right.svg);
+
+    /* Older browser hack
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
+    */
+
+    /* Feature support query example
+    @supports (-webkit-mask-image: url()) or (mask-image: url() {
+     background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    background-image: none;
+    } */
 
     //CSS Mask
     background-color: var(--color-primary);
@@ -353,6 +424,10 @@
     margin-right: auto;
   }
 
+  &__friends {
+    display: flex;
+  }
+
   &__photo {
     box-sizing: content-box; // adds padding to height and width --default box sizng
     height: 4rem;
@@ -361,7 +436,7 @@
     border: 3px solid #fff; //provides additional spacing(padding) that seems to cause the element to shrink when removed. Adding the px to the height and width can solve it but using border-box looks cleaner.
 
     &:not(:last-child) {
-      margin-right: -1.5rem; //overlapping images hack
+      margin-right: -2rem; //overlapping images hack
     }
   }
 }
@@ -375,6 +450,11 @@
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -434,6 +514,10 @@
 .cta {
   padding: 3.5rem 0;
   text-align: center;
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    padding: 2.5rem 0;
+  }
 
   &__book-now {
     font-size: 2rem;
